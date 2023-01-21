@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  db:        
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: user
+    volumes:
+      - db-data:/var/lib/postgresql/data
+  pgadmin:            
+    ports:
+      - "5400:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - adminpanel-data:/var/lib/pgadmin
+volumes:
+  db-data:
+    driver: local
+  adminpanel-data:
+    driver: local
